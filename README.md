@@ -8,6 +8,18 @@ A repository to store all items pertaining to course `Introduction to UAV Design
 
 - [Introduction to UAV Design (Spring 2022) @ IIITH](#introduction-to-uav-design-spring-2022--iiith)
     - [Table of contents](#table-of-contents)
+    - [Contents](#contents)
+        - [Assignments](#assignments)
+
+## Contents
+
+### Assignments
+
+The assignments of this course are as follows
+
+| Assignment | Description |
+| :----- | :------ |
+| [Assignment 1](Assignments/Assignment%201/README.md) | Basic UAV design criteria |
 
 [![Developer TheProjectsGuy][dev-shield]][dev-profile-link]
 
