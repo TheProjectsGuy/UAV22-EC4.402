@@ -1,0 +1,54 @@
+% !TeX root = main.tex
+\section{UAV Design for Spraying Fertilizer}
+
+The following are the given requirements
+
+\begin{align*}
+    \textup{Endurance} = 40 \, \textup{min} &&
+    \textup{Range} = 5 \, \textup{Km} &&
+    \textup{Payload weight} = 10 \, \textup{Kg} \\
+    \textup{Flying altitude} = 20 \, \textup{m} &&
+    \textup{Climb rate} = 1 \, \textup{m/s} &&
+    \textup{Descent rate} = 2 \, \textup{m/s} \\
+    \textup{Cruise speed} = 5 \, \textup{m/s}
+\end{align*}
+
+It is assumed that these are the minimum values and with a greater budget these can be extended.
+
+% CONOPS
+\subsection{CONOPS}
+
+\textbf{CONOPS} or \emph{Concept of Operations} is the overview of the operations involved in the application of the UAV. The stages of operation are defined as
+
+\begin{enumerate}
+    \item \textbf{Takeoff} from ground and \textbf{climb} to an altitude of $20 \, m$. The climb rate is $1 \, m/s$.
+    \item \textbf{Cruise} in straight lines while spraying fertilizer on the field. The equipment to carry out this operation is the payload (maximum $10 \, Kg$). The cruise speed is $5 \, m/s$. The UAV has the following modes of operation
+    \begin{itemize}
+        \item \emph{Manual control}: Giving the UAV velocity commands, directions, and manually controlling the fertilizer equipment.
+        \item Calibrated \emph{autonomous control}: Calibrate the UAV to the field and configure the fertilizer distribution parameters. Then let the UAV perform the operation.
+    \end{itemize}
+    \item \textbf{Descent} after the task of spraying fertilizer is completed. Descent rate is $2 \, m/s$ from a height of $20 \, m$. After this, the UAV \textbf{lands}.
+\end{enumerate}
+
+% Requirements
+\subsection{Requirement specifications}
+
+The following can be considered the \emph{requirement specifications} for the starting of the design phase
+
+\begin{itemize}
+    \item \textit{Operating Velocity}: The cruise speed of the UAV is $5 \, m/s$.
+    \item \textit{Range}: The total distance the UAV can travel without refuelling/recharging is $5 Km$.
+    \item \textit{Endurance}: The total time the UAV can operate without refuelling/recharging is $40 \, min$.
+    \item \textit{Payload}: The payload - fertilizer distribution unit and storage - is $10 \, Kg$ heavy.
+    \item \textit{Wind} conditions: The UAV will be operated in wind speeds $4 \, km/hr$ to $9 \, km/hr$ \footnote{Weather data of Bangalore from \url{https://www.weatheronline.in} for Jan 2000 to Dec 2021, see wind speed and direction}. We can assume the \emph{upper limit of $10 \, km/hr$}. Most of the wind flows in the east and west direction.
+    \item \textit{Altitude}: The flight altitude is capped at $20 \, m$ from ground.
+    \item \textit{Safety}: The UAV must be certified for safety standards in agriculture. It also must have regulatory compliance with GOI (Government of India) guidelines. The following can be noted \footnote{Main reference from \url{https://uavcoach.com/drone-laws-in-india/} and \url{https://digitalsky.dgca.gov.in/home}}
+    \begin{itemize}
+        \item The drone falls in the \emph{medium} category (weighing total of $25 \, kg$ to $150 \, kg$).
+        \item Drone must have GPS, flight data logging, RTH (Return-to-home), anti-collision light, RFID and SIM with NPNT (No Permission No Takeoff) compliant software, and ID plate.
+    \end{itemize}
+    \item \textit{Maneuverability}: No agile maneuvers are needed. The drone will be oriented in the horizontal plane virtually always (no pitch and roll, only yaw).
+\end{itemize}
+
+% Market survey
+\subsection{Market Survey}
