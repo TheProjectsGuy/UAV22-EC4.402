@@ -1,0 +1,64 @@
+% !TeX root = main.tex
+\section{Dynamic Thrust Given Propellers}
+
+The UIUC (University of Illinois at Urbana-Champaign) propeller database can be found at \cite{uiuc-database}.
+
+\noindent
+APC is a propeller manufacturer based in California, USA. Propellers are listed \href{https://www.apcprop.com/product-category/multi-copters-drones/}{here}. The APC propellers can be found in UIUC \href{https://m-selig.ae.illinois.edu/props/volume-1/propDB-volume-1.html#APC}{here}.
+
+\paragraph*{Reading Method}
+Say APC 10x4.7 is given. This means a 10-inch diameter propeller with a pitch of 4.7 inch/revolution. The pitch gives an indication of the amount of twist in propeller blades.
+
+\paragraph*{Equations}
+The following equations can be found from \cite{brandt2011propeller,aerotrash-uiuc-article,uiuc-data-equs}.
+
+\begin{align}
+    J = \frac{V}{nD} &&
+    C_{T} = \frac{T}{\rho n^2 D^4} &&
+    C_{P} = \frac{P}{\rho n^3 D^5} &&
+    \eta = J \frac{C_T}{C_P}
+    \label{eq:q2-base-equs}
+\end{align}
+
+The terms in equation \ref{eq:q2-base-equs} are described below
+
+\begin{itemize}
+    \item $J$ is called the \emph{Advance ratio}.
+    \item $V$ is the \emph{airspeed} (in $m/s$).
+    \item $n$ is the rotation speed in $rev/s$. This is also shown as $\Omega$ in the plots.
+    \item $D$ is the propeller diameter (in $m$). This is usually interpreted from the name.
+    \item $C_T$ is the thrust coefficient.
+    \item $T$ is the thrust produced by the propeller (in $N$).
+    \item $\rho$ is the air density (in $kg/m^3$).
+    \item $C_P$ is the power coefficient.
+    \item $P$ is the power (in $W$) which is the product of torque and angular speed. This is the input power.
+    \item $\eta$ is the efficiency of the propeller in the particular setting. It is same as the ratio of output power $P_{out} = TV$ to input power $P_{in} = P$, that is $\eta = \sfrac{P_{out}}{P_{in}}$.
+\end{itemize}
+
+From equation \ref{eq:q2-base-equs}, the thrust of the propeller can be calculated as
+
+\begin{equation}
+    T = C_T \, \rho n^2 D^4
+    \label{eq:q2-prop-thrust}
+\end{equation}
+
+\subsection{APC 8\texorpdfstring{$\times$}{by}6}
+
+The propeller diameter $D$ is $8$ inches ($0.2032\,m$) and the pitch is $6$ inches per revolution. Assuming the density of air as $1.29\,Kg/m^3$.
+Assuming the fight speed to be the air speed, that is $V = 10\,m/s$
+
+\subsubsection*{4000 RPM}
+
+Here, $n$ is $4000\,RPM$ (or $\sfrac{200}{3}\,rev/s$). First, to calculate $J$, we know $V$, $D$, and $n$.
+
+\begin{equation*}
+    J = \frac{V}{nD} = \frac{10\,m/s}{\sfrac{200}{3}\,rev/s \; 0.2032\,m} = \frac{375}{508} = 0.7381
+\end{equation*}
+
+The value of $C_T$ can be found from \href{https://m-selig.ae.illinois.edu/props/volume-1/plots/apcsf_8x6_ct.png}{here} (data \href{https://m-selig.ae.illinois.edu/props/volume-1/data/apcsf_8x6_2784rd_4010.txt}{here}). Getting data from line $J = 0.726$. We get $C_T = 0.0496$.
+
+By substituting all this in equation \ref{eq:q2-prop-thrust}, we get the following
+
+\begin{align*}
+    T = C_T \, \rho n^2 D^4
+\end{align*}
