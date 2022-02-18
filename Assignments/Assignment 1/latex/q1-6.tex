@@ -1,0 +1,53 @@
+% !TeX root = q1.tex
+\subsection{Performance Analysis}
+
+\subsubsection*{Propeller selection}
+
+We know that the static thrust of a propeller is given by
+\footnote{Check \href{https://www.electricrcaircraftguy.com/2014/04/propeller-static-dynamic-thrust-equation-background.html}{here} for complete formula}
+
+\begin{equation}
+    T_h = 0.1606 \, n^2 D^{3.5} \sqrt{p_h}
+    \Rightarrow D = \left ( \frac{T_h}{0.1606 \, n^2 \sqrt{p_h}} \right )^{\sfrac{1}{3.5}}
+    \label{eq:q1-static-thrust}
+\end{equation}
+
+The hover thrust should \emph{at least} support twice the take-off weight, that is $8 T_h = 2 mg$ (there are eight propellers). Assuming that the take-off weight is $m = 35\,kg$. This means that $T_h = 85.75\,N$.
+Assuming that we use the pitch as $p_h=13\,\textup{inches}=0.3302\,m$. This is to narrow down the propeller selection.
+Let us assume takeoff at $n=4000\,RPM=\sfrac{4000}{60}\,RPS$. Substituting all this in equation \ref{eq:q1-static-thrust}, we get $D = 0.63943\,m = 25.1744\,\textup{inches}$.
+Assuming that we pick from the APC propeller database, we can pick the propeller \texttt{APC 27x13 EP} from \href{https://www.apcprop.com/product/27x13ep/}{here} and refer the database \footnote{The performance data of all APC propellers can be found \href{https://www.apcprop.com/technical-information/performance-data/}{here}}. So we get $D = 27\,\textup{inches} = 0.6858\,m$
+
+Using the propeller mentioned above, the take-off speed (RPM) can be calculated as
+
+\begin{equation*}
+    n = \left ( \frac{T_h}{0.1606 \, D^{3.5} \sqrt{p_h}} \right )^{\sfrac{1}{2}} = 58.97995 \, RPS = 3538.79 \, RPM
+\end{equation*}
+
+\noindent
+We select the propeller \texttt{APC 27x13 EP}, which will provide lift-off at $3538.79 \, RPM$.
+
+\subsubsection*{Power and Battery}
+
+The power needed by the propellers when hovering (that is, $V_a = 0$) is given by
+
+\begin{equation}
+    P_{out} = \frac{\sqrt{2\,T_h^3}}{\sqrt{\pi \rho D^2}}
+\end{equation}
+
+Assume that $\rho = 1.225\,kg/m^3$. For our case, $P_{out} = 834.69\,W$. To generate this output power, the propellers will have to be given more input power (they're not $100\%$ efficient).
+
+Assuming that the propeller efficiency is $65\%$, we get $P_{prop\_in} = \sfrac{P_{out}}{\eta_{prop}} = 1284.138\,W$. This is the power the motor will have to output. To generate this output power, the motor will have to be given more input power (they too are not $100\%$ efficient).
+
+\paragraph*{Motor power}
+
+Assuming that the motor efficiency is $80\%$, we get $P_{motor\_in} = \sfrac{P_{prop\_in}}{\eta_{motor}} = 1605.172\,W$. This is the power the battery will have to provide (only to the motors for the purpose of hovering).
+
+Assuming that the battery is close to $95\%$ efficient, we get the rated battery power as $P_{bat} = \sfrac{P_{motor\_in}}{\eta_{bat}} = 1689.654\,W$. This is the rated battery power we need. At least a safety margin of 1.2 times should be used (accommodate for other power consuming items on board) when picking a battery.
+
+\paragraph*{Battery}
+
+The battery \texttt{44.4V 32000mAh 25C 12S} provides a maximum current
+\footnote{Check the \href{https://www.power-sonic.com/blog/what-is-a-battery-c-rating/}{C rating} for discharge time and maximum current transfer}
+of $\sfrac{32000}{1000} \times 25 = 800\,A$. This means that a power of $44.4 \times 800 = 35.520\,kW$ (maximum peak) can be drawn from the battery. However, at this rate, the battery will last for only $\sfrac{(\sfrac{32000}{1000})}{800}\times60 = 2.4\,min = 144\,sec$. This is far lesser than our requirement. 
+
+Let's see the performance at the current rating. Assuming that we draw $1.2\times1689.654 = 2027.585\,W$. We will be drawing a current of $\sfrac{2027.585}{44.4} = 45.666\,A$. This will last for $\sfrac{(\sfrac{32000}{1000})}{45.666}\times60 = 42\,min$. This matches our requirement of $45\,min$ exactly (we were generous in assumptions).
