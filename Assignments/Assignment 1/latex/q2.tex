@@ -4,7 +4,7 @@
 The UIUC (University of Illinois at Urbana-Champaign) propeller database can be found at \cite{uiuc-database}.
 
 \noindent
-APC is a propeller manufacturer based in California, USA. Propellers are listed \href{https://www.apcprop.com/product-category/multi-copters-drones/}{here}. The APC propellers can be found in UIUC \href{https://m-selig.ae.illinois.edu/props/volume-1/propDB-volume-1.html#APC}{here}.
+APC is a propeller manufacturer based in California, USA. Propellers are listed \href{https://www.apcprop.com/product-category/multi-copters-drones/}{here}. The APC propellers can be found in UIUC \href{https://m-selig.ae.illinois.edu/props/volume-1/propDB-volume-1.html#APC}{here}. All results presented here are summarized in table \ref{tab:q2-thrust-vals}.
 
 \paragraph*{Reading Method}
 Say APC 10x4.7 is given. This means a 10-inch diameter propeller with a pitch of 4.7 inch/revolution. The pitch gives an indication of the amount of twist in propeller blades.
@@ -45,7 +45,7 @@ From equation \ref{eq:q2-base-equs}, the thrust of the propeller can be calculat
 \subsection{APC 8\texorpdfstring{$\times$}{by}6}
 
 The propeller diameter $D$ is $8$ inches ($0.2032\,m$) and the pitch is $6$ inches per revolution. Assuming the density of air as $1.29\,Kg/m^3$.
-Assuming the fight speed to be the air speed, that is $V = 10\,m/s$
+Assuming the fight speed to be the air speed, that is $V = 10\,m/s$.
 
 \subsubsection*{4000 RPM}
 
@@ -59,6 +59,158 @@ The value of $C_T$ can be found from \href{https://m-selig.ae.illinois.edu/props
 
 By substituting all this in equation \ref{eq:q2-prop-thrust}, we get the following
 
-\begin{align*}
-    T = C_T \, \rho n^2 D^4
-\end{align*}
+\begin{equation*}
+    T = C_T \, \rho n^2 D^4 = 0.0496 \times 1.29 \times (\sfrac{200}{3})^2 \times (0.2032)^4 \approx 0.48482\,N
+\end{equation*}
+
+At $4000\,RPM$, the dynamic thrust is $0.48482\,N$.
+
+\subsubsection*{5000 RPM}
+
+Here, $n$ is $5000\,RPM$ (or $\sfrac{250}{3}\,rev/s$). Substituting in $J$, we get
+
+\begin{equation*}
+    J = \frac{V}{nD} = \frac{10\,m/s}{\sfrac{250}{3}\,rev/s \; 0.2032\,m} = \frac{75}{127} = 0.59055
+\end{equation*}
+
+The value of $C_T$ can be found from \href{https://m-selig.ae.illinois.edu/props/volume-1/plots/apcsf_8x6_ct.png}{here} (data \href{https://m-selig.ae.illinois.edu/props/volume-1/data/apcsf_8x6_2786rd_5004.txt}{here}). Getting data from line $J=0.609$. We get $C_T = 0.0723$. Substituting all this in equation \ref{eq:q2-prop-thrust}, we get the following
+
+\begin{equation*}
+    T = C_T \, \rho n^2 D^4 = 0.0723 \times 1.29 \times (\sfrac{250}{3})^2 \times (0.2032)^4 \approx 1.10423\,N
+\end{equation*}
+
+At $5000\,RPM$, the dynamic thrust is $1.10423\,N$.
+
+\subsubsection*{6000 RPM}
+
+Here, $n$ is $6000\,RPM$ (or $100\,rev/s$). Substituting in $J$, we get
+
+\begin{equation*}
+    J = \frac{V}{nD} = \frac{10\,m/s}{100\,rev/s \; 0.2032\,m} = \frac{125}{254} = 0.492125
+\end{equation*}
+
+The value of $C_T$ can be found from \href{https://m-selig.ae.illinois.edu/props/volume-1/plots/apcsf_8x6_ct.png}{here} (data \href{https://m-selig.ae.illinois.edu/props/volume-1/data/apcsf_8x6_2788rd_6009.txt}{here}). Getting data from line $J = 0.507$. We get $C_T = 0.0970$. Substituting all this in equation \ref{eq:q2-prop-thrust}, we get the following
+
+\begin{equation*}
+    T = C_T \, \rho n^2 D^4 = 0.0970 \times 1.29 \times (100)^2 \times (0.2032)^4 \approx 2.133321\,N
+\end{equation*}
+
+At $6000\,RPM$, the dynamic thrust is $2.133321\,N$.
+
+\subsection{APC 9\texorpdfstring{$\times$}{by}6}
+
+The propeller diameter $D$ is $9$ inches ($0.2286\,m$) and the pitch is $6$ inches per revolution. Assuming the density of air as $1.29\,Kg/m^3$.
+Assuming the fight speed to be the air speed, that is $V = 10\,m/s$.
+
+\subsubsection*{4000 RPM}
+
+Here, $n$ is $4000\,RPM$ (or $\sfrac{200}{3}\,rev/s$). Substituting in $J$, we get
+
+\begin{equation*}
+    J = \frac{V}{nD} = \frac{10\,m/s}{\sfrac{200}{3}\,rev/s \; 0.2286\,m} = \frac{250}{381} = 0.65616
+\end{equation*}
+
+The value of $C_T$ can be found from \href{https://m-selig.ae.illinois.edu/props/volume-1/plots/apcsf_9x6_ct.png}{here} (data \href{https://m-selig.ae.illinois.edu/props/volume-1/data/apcsf_9x6_kt0980_4016.txt}{here}). Getting data from line $J=0.648$. We get $C_T=0.0515$. Substituting all this in equation \ref{eq:q2-prop-thrust}, we get the following
+
+\begin{equation*}
+    T = C_T \, \rho n^2 D^4 = 0.0515 \times 1.29 \times (\sfrac{200}{3})^2 \times (0.2286)^4 \approx 0.80634\,N
+\end{equation*}
+
+At $4000\,RPM$, the dynamic thrust is $0.80634\,N$.
+
+\subsubsection*{5000 RPM}
+
+Here, $n$ is $5000\,RPM$ (or $\sfrac{250}{3}\,rev/s$). Substituting in $J$, we get
+
+\begin{equation*}
+    J = \frac{V}{nD} = \frac{10\,m/s}{\sfrac{250}{3}\,rev/s \; 0.2286\,m} = \frac{200}{381} = 0.524934
+\end{equation*}
+
+The value of $C_T$ can be found from \href{https://m-selig.ae.illinois.edu/props/volume-1/plots/apcsf_9x6_ct.png}{here} (data \href{https://m-selig.ae.illinois.edu/props/volume-1/data/apcsf_9x6_kt0982_5006.txt}{here}). Getting data from line $J = 0.541$. We get $C_T = 0.0773$. Substituting all this in equation \ref{eq:q2-prop-thrust}, we get the following
+
+\begin{equation*}
+    T = C_T \, \rho n^2 D^4 = 0.0773 \times 1.29 \times (\sfrac{250}{3})^2 \times (0.2286)^4 \approx 1.89108\,N
+\end{equation*}
+
+At $5000\,RPM$, the dynamic thrust is $1.89108\,N$.
+
+\subsubsection*{6000 RPM}
+
+Here, $n$ is $6000\,RPM$ (or $100\,rev/s$). Substituting in $J$, we get
+
+\begin{equation*}
+    J = \frac{V}{nD} = \frac{10\,m/s}{100\,rev/s \; 0.2286\,m} = \frac{500}{1143} = 0.437445
+\end{equation*}
+
+The value of $C_T$ can be found from \href{https://m-selig.ae.illinois.edu/props/volume-1/plots/apcsf_9x6_ct.png}{here} (data \href{https://m-selig.ae.illinois.edu/props/volume-1/data/apcsf_9x6_kt0983_6017.txt}{here}). Getting data from line $J = 0.430$. We get $C_T = 0.1039$. Substituting all this in equation \ref{eq:q2-prop-thrust}, we get the following
+
+\begin{equation*}
+    T = C_T \, \rho n^2 D^4 = 0.1039 \times 1.29 \times (100)^2 \times (0.2286)^4 \approx 3.66024\,N
+\end{equation*}
+
+At $6000\,RPM$, the dynamic thrust is $3.66024\,N$.
+
+\subsection{APC 10\texorpdfstring{$\times$}{by}7}
+
+The propeller diameter $D$ is $10$ inches ($0.254\,m$) and the pitch is $7$ inches per revolution. Assuming the density of air as $1.29\,Kg/m^3$.
+Assuming the fight speed to be the air speed, that is $V = 10\,m/s$.
+
+\subsubsection*{4000 RPM}
+
+Here, $n$ is $4000\,RPM$ (or $\sfrac{200}{3}\,rev/s$). Substituting in $J$, we get
+
+\begin{equation*}
+    J = \frac{V}{nD} = \frac{10\,m/s}{\sfrac{200}{3}\,rev/s \; 0.254\,m} = \frac{75}{127} = 0.59055
+\end{equation*}
+
+The value of $C_T$ can be found from \href{https://m-selig.ae.illinois.edu/props/volume-1/plots/apcsf_10x7_ct.png}{here} (data \href{https://m-selig.ae.illinois.edu/props/volume-1/data/apcsf_10x7_kt0830_3999.txt}{here}). Getting data from line $J = 0.606$. We get $C_T = 0.0582$. Substituting all this in equation \ref{eq:q2-prop-thrust}, we get the following
+
+\begin{equation*}
+    T = C_T \, \rho n^2 D^4 = 0.0582 \times 1.29 \times (\sfrac{200}{3})^2 \times (0.254)^4 \approx 1.38888\,N
+\end{equation*}
+
+At $4000\,RPM$, the dynamic thrust is $1.38888\,N$.
+
+\subsubsection*{5000 RPM}
+
+Here, $n$ is $5000\,RPM$ (or $\sfrac{250}{3}\,rev/s$). Substituting in $J$, we get
+
+\begin{equation*}
+    J = \frac{V}{nD} = \frac{10\,m/s}{\sfrac{250}{3}\,rev/s \; 0.254\,m} = \frac{60}{127} = 0.47244
+\end{equation*}
+
+The value of $C_T$ can be found from \href{https://m-selig.ae.illinois.edu/props/volume-1/plots/apcsf_10x7_ct.png}{here} (data \href{https://m-selig.ae.illinois.edu/props/volume-1/data/apcsf_10x7_kt0831_5003.txt}{here}). Getting data from line $J = 0.482$. We get $C_T = 0.0872$. Substituting all this in equation \ref{eq:q2-prop-thrust}, we get the following
+
+\begin{equation*}
+    T = C_T \, \rho n^2 D^4 = 0.0872 \times 1.29 \times (\sfrac{250}{3})^2 \times (0.254)^4 \approx 3.25146\,N
+\end{equation*}
+
+At $5000\,RPM$, the dynamic thrust is $3.25146\,N$.
+
+\subsubsection*{6000 RPM}
+
+Here, $n$ is $6000\,RPM$ (or $100\,rev/s$). Substituting in $J$, we get
+
+\begin{equation*}
+    J = \frac{V}{nD} = \frac{10\,m/s}{100\,rev/s \; 0.254\,m} = \frac{50}{127} = 0.39370
+\end{equation*}
+
+The value of $C_T$ can be found from \href{https://m-selig.ae.illinois.edu/props/volume-1/plots/apcsf_10x7_ct.png}{here} (data \href{https://m-selig.ae.illinois.edu/props/volume-1/data/apcsf_10x7_kt0833_6006.txt}{here}). Getting data from line $J = 0.382$. We get $C_T = 0.1138$. Substituting all this in equation \ref{eq:q2-prop-thrust}, we get the following
+
+\begin{equation*}
+    T = C_T \, \rho n^2 D^4 = 0.1138 \times 1.29 \times (100)^2 \times (0.254)^4 \approx 6.11036\,N
+\end{equation*}
+
+At $6000\,RPM$, the dynamic thrust is $6.11036\,N$.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|l||*{5}{c|}} \hline
+        \backslashbox{Model}{RPM} & 4000 & 5000 & 6000 \\ \hline
+        APC 8$\times$6 & $0.48482\,N$ & $1.10423\,N$ & $2.133321\,N$ \\\hline
+        APC 9$\times$6 & $0.80634\,N$ & $1.89108\,N$ & $3.66024\,N$ \\\hline
+        APC 10$\times$7 & $1.38888\,N$ & $3.25146\,N$ & $6.11036\,N$ \\\hline
+    \end{tabular}
+    \caption{Table of thrust values for different propellers}
+    \label{tab:q2-thrust-vals}
+\end{table}
