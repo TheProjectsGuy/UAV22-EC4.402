@@ -1,2 +1,114 @@
 % !TeX root = main.tex
 \subsection{Maximizing range}
+
+The range maximization problem can be converted into an endurance maximization problem by \emph{assuming} that the UAV travels at a constant speed (with same air conditions).
+
+The following assumptions are made
+
+\begin{itemize}
+    \item The propeller is \texttt{APC 27x13 EP} (APC performance data \href{https://www.apcprop.com/files/PER3_27x13E.dat}{here}).
+    \item The drone takes off, climbs with a speed of $1\,m/s$, cruises with a speed of $5\,m/s$, and then descents at the speed of $2\,m/s$. These are constants (no acceleration, so $\dot{w} = 0$).
+    \item The take-off mass of the drone is $m = 35\,kg$
+\end{itemize}
+
+\subsubsection*{Energy requirement}
+
+The total energy is given by
+
+\begin{equation*}
+    E_r = P_c t_c + P_{cr} t_{cr} + P_h t_h + P_d t_d
+\end{equation*}
+
+Here, $P_c$, $P_{cr}$, $P_h$, and $P_d$ are the power consumed during climb, cruise, hover, and descent phase of the flight (which is the product of thrust and velocity). The time is given by $t_*$.
+
+% Climb
+\paragraph*{Climb phase}
+During the climb phase, the power requirement is given as follows
+
+\begin{align*}
+    T_C &= \frac{mg - D\,\textup{sign}(w)}{8} = \frac{mg - 0.1021 w^2\,\textup{sign}(w)}{8} = 42.887\,N \\
+    P_C &= T_C \, V_C = 42.887 \, W
+\end{align*}
+
+The power during climb phase is $P_C = 42.887 \, W$ per propeller.
+
+% Cruise
+\paragraph*{Cruise phase}
+During the cruise phase, the power requirement is given as follows
+
+\begin{align*}
+    T = \sum_{i=1}^{n_p} T_i &&
+    T \cos(\theta) = mg && T \sin(\theta) = k_d V^2 \\
+    \theta = \textup{atan}\left(\frac{k_d V^2}{mg}\right) &&
+    T = \frac{mg}{\cos(\theta)} = 343.01\,N &&
+    P = T\, V = 1715.04\,W
+\end{align*}
+
+The power during the cruise phase is $1715.04\,W$ for all the propellers ($T$ is the sum of all in the above equations).
+
+% Descent
+\paragraph*{Descent phase}
+During the descent phase, the power requirement is given as follows
+
+\begin{align*}
+    T_D &= \frac{mg - D\,\textup{sign}(w)}{8} = \frac{mg - 0.1021 w^2\,\textup{sign}(w)}{8} = 42.823\,N \\
+    P_C &= T_C \, V_C = 85.6479 \, W
+\end{align*}
+
+The power during descent phase is $P_C = 85.6479 \, W$ per propeller.
+
+\paragraph*{Total power}
+
+Assuming a $20\,s$ climb, $2400\,s$ cruise, and $10\,s$ descent (flying at a height of $20\,m$ from takeoff). The total power is
+
+\begin{equation*}
+    E_r = 42.887 \times 20 \times 8 + 1715.04 \times 2400 + 85.6479 \times 10 \times 8 = 4129.809 \, kJ
+\end{equation*}
+
+The drone is expected to consume $4129.809 \, kJ$ of energy during its flight. The battery we plan to use is a $32000\,mAh$ battery with $44.4\,V$ voltage. The battery energy is $E_b = 32 \times 3600 \times 44.4 = 5114.880\,kJ$. The battery can comfortably provide for the requirement.
+
+The safety factor is $\sfrac{5114.880}{4129.809} = 1.23$. 
+Let us put another battery, and add an additional $10\,kg$ to weight. Keeping other things the same, let us calculate the new range, through the endurance which is the cruise time, after this modification.
+
+\subsubsection*{Modified energy requirements}
+
+The weight is now $45\,kg$ (well within the limits of the drone). Rest everything is the same.
+
+\paragraph*{Climb phase}
+
+\begin{align*}
+    T_C &= \frac{mg - D\,\textup{sign}(w)}{8} = \frac{mg - 0.1021 w^2\,\textup{sign}(w)}{8} = 55.1377 \,N \\
+    P_C &= T_C \, V_C = 55.1377 \, W
+\end{align*}
+
+The climb will require $55.1377 \, W$ power per propeller.
+
+\paragraph*{Cruise phase}
+
+\begin{align*}
+    \theta = \textup{atan}\left(\frac{k_d V^2}{mg}\right) &&
+    T = \frac{mg}{\cos(\theta)} = 441.0074 \, N &&
+    P = T\, V = 2205.0369 \,W
+\end{align*}
+
+The cruise phase will require $2205.0369 \, W$ power.
+
+\paragraph*{Descent phase}
+
+\begin{align*}
+    T_C &= \frac{mg - D\,\textup{sign}(w)}{8} = \frac{mg - 0.1021 w^2\,\textup{sign}(w)}{8} = 55.07395 \,N \\
+    P_C &= T_C \, V_C = 110.1479 \, W
+\end{align*}
+
+The climb will require $110.1479 \, W$ power per propeller.
+
+Assuming that the battery is $80\%$ efficient, the following can be done to calculate the maximum cruise time allowed
+
+\begin{equation*}
+    0.80 \times 2 \times 32 \times 3600 \times 44.4 = 8 \times 55.1377 \times 20 + 2205.0369 \, t_{cr} + 8 \times 110.1479 \times 10
+    \Rightarrow t_{cr} = 3703.41\,s \approx 61 \, min
+\end{equation*}
+
+Now that the flight time is $3700\,s$ (approx), the new range (which is maximized) is $d = V_{cr} t_{cr} \approx 18.5\,km$.
+
+Therefore, after one iteration of design change described above, we could maximize the range to $18.5\,km$.
