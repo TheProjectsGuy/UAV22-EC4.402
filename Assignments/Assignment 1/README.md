@@ -13,3 +13,4 @@ The contents of this folder are described below
 | S. No. | Item | Description |
 | :---- | :---- | :------- |
 | 1 | [Assignment 1.pdf](./Assignment%201.pdf) | Given questions for assignment |
+| 2 | [main.pdf](./latex/main.pdf) | Assignment submission |
