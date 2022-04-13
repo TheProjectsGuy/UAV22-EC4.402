@@ -21,6 +21,12 @@ The assignments of this course are as follows
 | :----- | :------ |
 | [Assignment 1](Assignments/Assignment%201/README.md) | Basic UAV design criteria |
 
+The following assignments are in process
+
+| Assignment | Description |
+| :----- | :------ |
+| [Assignment 2](./Assignments/Assignment%202/README.md) | `TBD` |
+
 [![Developer TheProjectsGuy][dev-shield]][dev-profile-link]
 
 [dev-shield]: https://img.shields.io/badge/Developer-TheProjectsGuy-blue
