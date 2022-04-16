@@ -26,4 +26,4 @@
 *.blg
 
 # Include result
-#!main.pdf
+!main.pdf
