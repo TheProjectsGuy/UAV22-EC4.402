@@ -8,6 +8,9 @@
 
     Frame X, Y, Z is following the NED convention. Using PD controller
     for generating thrust and angle actions
+
+    Set the variables in `Targets (final frame)` and run the code.
+    Plots are in the end.
 """
 
 # %% Import everything
@@ -19,9 +22,9 @@ from tqdm import tqdm
 # --- Targets (final frame) ---
 # pos_d = np.array([0., 0., 0.])  # Desired X, Y, Z position
 # pos_d = np.array([20., 40., -5.])     # Desired X, Y, Z position
-pos_d = np.array([30., -50., -5.])     # Desired X, Y, Z position
+# pos_d = np.array([30., -50., -5.])     # Desired X, Y, Z position
 # pos_d = np.array([-10., -60., -5.])     # Desired X, Y, Z position
-# pos_d = np.array([-70., 30., -5.])     # Desired X, Y, Z position
+pos_d = np.array([-70., 30., -5.])     # Desired X, Y, Z position
 ang_d = np.array([0., 0., 0.])     # Desired inertial X, Y, Z angles
 vel_d = np.array([0., 0., 0.])     # Desired X, Y, Z velocity
 # --- Initial state of the quadrotor ---
@@ -209,14 +212,15 @@ cpos = pos_init # Current position - [x, y, z] in m
 cvel = vel_init # Current velocity - [x, y, z] in m/s
 gvect = np.array([0., 0., g]) # Gravity in world (inertial) frame
 cang = ang_init # Current angles (inertial) - phi, theta, psi
-cangvel = ang_vel_init  # Current angular velocity
+cangvel = ang_vel_init  # Current angular velocity (inertial)
 max_angs = np.array([max_phi, max_theta, max_psi])
 min_angs = -max_angs    # Minimum bound = -(Maximum bound)
 angvel_d = np.array([0., 0., 0.])   # Desired ang. vel.
 # --- Logging variables ---
 pos_vals = []   # List of x, y, z positions
 vel_vals = []   # List of x, y, z velocities
-acc_vals = []   # List of x, y, z accelerations (desired)
+acc_vals = []   # List of x, y, z accelerations
+des_acc_vals = []   # List of x, y, z accelerations (desired)
 thrustd_vals = []   # List of desired thrust (for UAV propellers)
 des_ang_vals = []   # List of phi, theta, psi desired - unclipped
 des_ang_clipped_vals = []   # List of Ph, The, Ps desired - clipped
@@ -304,7 +308,8 @@ for num_i in tqdm(range(len(time_vals)), ncols=80):
     # -- Log all values --
     pos_vals.append(cpos.copy())
     vel_vals.append(cvel.copy())
-    acc_vals.append(des_acc.copy())
+    acc_vals.append(uav_linacc_I.copy())
+    des_acc_vals.append(des_acc.copy())
     thrustd_vals.append(des_thrust.copy())
     des_ang_vals.append(des_ang.copy())
     des_ang_clipped_vals.append(des_ang_clipped.copy())
@@ -318,6 +323,7 @@ for num_i in tqdm(range(len(time_vals)), ncols=80):
 pos_vals = np.array(pos_vals)
 vel_vals = np.array(vel_vals)
 acc_vals = np.array(acc_vals)
+des_acc_vals = np.array(des_acc_vals)
 thrustd_vals = np.array(thrustd_vals)
 des_ang_vals = np.array(des_ang_vals)
 des_ang_clipped_vals = np.array(des_ang_clipped_vals)
@@ -365,6 +371,16 @@ plt.plot(time_vals[:SIM_STOP], acc_vals[:SIM_STOP, 1], label="Y")
 plt.plot(time_vals[:SIM_STOP], acc_vals[:SIM_STOP, 2], label="Z")
 plt.legend()
 plt.savefig("./acceleration.jpg")
+plt.show(block=False)
+
+# %% Acceleration (desired) plots
+plt.figure()
+plt.title("Acceleration desired")
+plt.plot(time_vals[:SIM_STOP], des_acc_vals[:SIM_STOP, 0], label="X")
+plt.plot(time_vals[:SIM_STOP], des_acc_vals[:SIM_STOP, 1], label="Y")
+plt.plot(time_vals[:SIM_STOP], des_acc_vals[:SIM_STOP, 2], label="Z")
+plt.legend()
+plt.savefig("./acceleration_d.jpg")
 plt.show(block=False)
 
 # %% Thrust desired value

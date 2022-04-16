@@ -1,0 +1,37 @@
+\input{preamble.tex}
+
+\fancypagestyle{fancy_tr_rno}
+{
+   \fancyhf{}
+   \fancyhead[R]{Assignment 2 - Avneesh Mishra - 2021701032}
+   \renewcommand{\headrulewidth}{0pt} % removes horizontal header line
+}
+
+\title{Assignment 2 \\
+    \Large Control \& Navigation of a Quadrotor \\
+    \small EC4.402 - Introduction to UAV Design
+}
+
+\author{
+    Avneesh Mishra \\
+    \texttt{avneesh.mishra@research.iiit.ac.in}
+    \thanks{M.S. by research - CSE, IIIT Hyderabad, Roll No: 2021701032}
+}
+
+\begin{document}
+    \maketitle
+    \thispagestyle{fancy_tr_rno}
+    \tableofcontents
+    \pagebreak
+    % Main content
+    \subfile{system_model.tex}
+    \pagebreak
+    % Results section
+    \subfile{results.tex}
+    \pagebreak
+    % Bibliography
+    \printbibliography
+    % Appendix section
+    \appendix
+    \subfile{appendix.tex}
+\end{document}
