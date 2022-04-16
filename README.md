@@ -20,12 +20,12 @@ The assignments of this course are as follows
 | Assignment | Description |
 | :----- | :------ |
 | [Assignment 1](Assignments/Assignment%201/README.md) | Basic UAV design criteria |
+| [Assignment 2](./Assignments/Assignment%202/README.md) | Modeling and control of a UAV (position target) |
 
 The following assignments are in process
 
 | Assignment | Description |
 | :----- | :------ |
-| [Assignment 2](./Assignments/Assignment%202/README.md) | `TBD` |
 
 [![Developer TheProjectsGuy][dev-shield]][dev-profile-link]
 
