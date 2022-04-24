@@ -1,0 +1,90 @@
+% !TeX root = main.tex
+\section{FW-UAV Design for 3D Mapping}
+
+The following are the given requirement
+
+\begin{align*}
+    \textup{Endurance} = 60 \, \textup{min} &&
+    \textup{Area of operation} = 10 \, \textup{Km rad.} &&
+    \textup{Cruise speed} = 20 \, \textup{m/s} \\
+    \textup{Flying altitude} = 100 \, \textup{m (from ground)} &&
+    \textup{Climb rate} = 2 \, \textup{m/s} &&
+    \textup{Descent rate} = 2 \, \textup{m/s}
+\end{align*}
+
+It is assumed that these are the minimum values and with a greater budget these can be extended. It is assumed that some compromise on the area of operation (in terms of coverage area and not range) is acceptable.
+
+% CONOPS
+\subsection{CONOPS}
+
+\textbf{CONOPS} of \emph{Concept of Operations} is the overview of the operations involved in the application of the Fixed Wing UAV (FW-UAV). The stages of operation are defined as
+
+\begin{enumerate}
+    \item \textbf{Take-off} from ground. It is preferred to have a hand launch mechanism for take-off (bungee launch at best). Runway takeoff UAVs are least preferred (too much arrangement required for them).
+    \item \textbf{Climb} to the height of $100 \, m$ from ground. The climb rate is $2 \, m/s$.
+    \item \textbf{Cruise} in the area for performing mapping. It is assumed that the UAV travels in straight lines (back and forth) from one end to another end (confined in a circle - of $10\, Km$ radius).
+    \begin{itemize}
+        \item It is possible to take multiple trials for covering the entire area.
+        \item It is preferred to have an autonomous solution, where the path is programmed and the UAV follows it.
+        \item A manual solution is only required as a backup.
+    \end{itemize}
+    \item \textbf{Descent} from $100\, m$ to the ground. The descent rate is $2 \, m/s$.
+    \item \textbf{Landing} on the ground. The UAV will be at very low speeds when landing and can land on any grassland. It need not have a runway for landing (it doesn't even need wheels).
+\end{enumerate}
+
+The \textit{loitering} phase was not chosen because we decided on traveling (cruising) in straight lines, while taking turns. This is better if multiple views are required. Loitering can be chosen if the desired path is in form of expanding circles. 
+
+However, there will be no \textit{aggressive flight maneuvers}, as the application does not desire it.
+
+% Requirements
+\subsection{Requirement Specifications}
+
+The following can be considered the \emph{requirement specifications} for the starting of the design phase
+
+\begin{itemize}
+    \item \textbf{Operating velocity} can be the cruise speed of $20\,m/s$.
+    \item \textbf{Range} can be assumed to be around $30\,Km$ (for traversals). This will depend on the sensor. Some sensors can work from far, while some will require close proximity (increasing traversal range).
+    \item \textbf{Endurance} can be $60\,min$.
+    \item \textbf{Payload} will be the cameras and/or LiDAR sensors (which will be used for 3D mapping). Usually, these will be well under $500\,gm$.
+    \item \textbf{Wind} conditions will be around $5\,km/hr$ to $20\,km/hr$ \footnote{Weather data from \url{https://www.meteoblue.com/en/weather/historyclimate/}}. They will hardly be expected to go beyond $25\,km/hr$.
+    \item \textbf{Altitude} will be around $100\,m$ from ground, and $1000\,m$ to $3000\,m$ from sea level (mostly will be under $1500\,m$ for most commercial applications).
+    \item \textbf{Safety}: The UAV must be certified for surveillance and mapping standards, as well as human operation standards. It also must have regulatory compliance with GOI (Government of India) guidelines. The following can be noted \footnote{Main reference from \url{https://uavcoach.com/drone-laws-in-india/} and \url{https://digitalsky.dgca.gov.in/home}}
+    \begin{itemize}
+        \item The drone falls in the \emph{micro} category (weighing total of $250 \, g$ to $2 \, kg$).
+        \item Drone must have GPS, flight data logging, RTH (Return-to-home), anti-collision light, RFID and SIM with NPNT (No Permission No Takeoff) compliant software, and ID plate.
+    \end{itemize}
+    \item \textbf{Maneuverability}: No agile maneuvers are needed. The drone will be oriented horizontally virtually always. Only turning maneuvers are needed.
+\end{itemize}
+
+% Market research
+\subsection{Market Survey}
+
+\subsubsection*{senseFly eBee X}
+
+The senseFly eBee X fixed wing UAV is a hand-launched UAv suitable for mapping and surveillance applications. It is very mobile and convenient to use. 
+
+The product can be found at \url{https://www.sensefly.com/drone/ebee-x-fixed-wing-drone/}. Its specifications were obtained from the comparison table and datasheet at the same website.
+
+\begin{enumerate}
+    \item \textit{Operating velocity}: It can cruise from $11\,m/s$ to $30\,m/s$. Comfortably within our $20\,m/s$ bounds.
+    \item \textit{Range}: It has a standard flight range of $37\,km$ (maximum is $55\,km$). This is well over our $30\,km$ requirement.
+    \item \textit{Endurance}: It can fly for up to $90\,min$. Our requirement is only for $60\,min$.
+    \item \textit{Payload}: It will carry a camera as payload. The total weight will be around $1.3\,kg$ to $1.6\,kg$. It is very easy to carry around in a bagpack.
+    \item \textit{Wind}: It can tolerate wind up to $46\,km/hr$ (well beyond our maximum of $25\,km/hr$).
+    \item \textit{Altitude}: Its optimal altitude is $120\,m$, we only require $100\,m$.
+    \item \textit{Safety}: The UAV will require additional safety certification for India. It is certified for Canada, EU and the USA.
+\end{enumerate}
+
+With the above specifications, the UAV almost exceeds our requirements. Choosing it should give very comfortable bounds, thereby allowing for greater needs in the future.
+Price would be around \rupee~10,00,000 (including all accessories and carrying case, with extra batteries and ground stations). This UAV is shown in figure \ref{fig:ms-sf-ebee-x}.
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{sensefly-ebee-x.jpg}
+        \caption{senseFly eBee X}
+        \label{fig:ms-sf-ebee-x}
+    \end{subfigure}
+    \caption{FW-UAV Market Survey}
+    \label{fig:market-survey-fwuavs}
+\end{figure}
