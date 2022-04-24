@@ -26,6 +26,7 @@ The following assignments are in process
 
 | Assignment | Description |
 | :----- | :------ |
+| [Assignment 3](./Assignments/Assignment%203/README.md) | FW-UAV design criteria |
 
 [![Developer TheProjectsGuy][dev-shield]][dev-profile-link]
 
