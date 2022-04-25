@@ -61,7 +61,7 @@ The following can be considered the \emph{requirement specifications} for the st
 
 \subsubsection*{senseFly eBee X}
 
-The senseFly eBee X fixed wing UAV is a hand-launched UAv suitable for mapping and surveillance applications. It is very mobile and convenient to use. 
+The senseFly eBee X fixed wing UAV is a hand-launched UAV suitable for mapping and surveillance applications. It is very mobile and convenient to use. 
 
 The product can be found at \url{https://www.sensefly.com/drone/ebee-x-fixed-wing-drone/}. Its specifications were obtained from the comparison table and datasheet at the same website.
 
@@ -78,6 +78,27 @@ The product can be found at \url{https://www.sensefly.com/drone/ebee-x-fixed-win
 With the above specifications, the UAV almost exceeds our requirements. Choosing it should give very comfortable bounds, thereby allowing for greater needs in the future.
 Price would be around \rupee~10,00,000 (including all accessories and carrying case, with extra batteries and ground stations). This UAV is shown in figure \ref{fig:ms-sf-ebee-x}.
 
+It has a $116\,cm$ wingspan.
+
+
+\subsubsection*{Delair UX11}
+
+The Delair UX 11 fixed wing UAV is a compact hand-launched UAV suitable for mapping applications. The UAV has 3G and 4G capabilities giving it extended communication range and reducing the number of ground stations to one (receiver).
+
+The product can be found at \href{https://delair.aero/delair-commercial-drones/professional-mapping-drone-delair-ux11/}{https://delair.aero/}. Its specifications were obtained from the datasheet at the same website. Some information is also taken from its Amazon product page.
+
+\begin{enumerate}
+    \item \textit{Operating velocity}: The UAV can cruise at speed upto $15\,m/s$. This is a little less than our $20\,m/s$ requirement.
+    \item \textit{Range}: It has a range of $53\,km$. This is well over our $30\,km$ requirement.
+    \item \textit{Endurance}: It can fly for up to $60\,min$, which our exact requirement.
+    \item \textit{Payload}: It will not require any external payload as the cameras are built into the UAV body. The entire UAV weighs less than $1.5\,kg$.
+    \item \textit{Wind}: It can tolerate wind up to $45\,km/hr$ (well beyond our maximum of $25\,km/hr$). It can even fly in light rain.
+    \item \textit{Altitude}: Its optimal altitude is $120\,m$, we only require $100\,m$.
+    \item \textit{Safety}: The UAV will require additional safety certification for India. It is certified for the USA.
+\end{enumerate}
+
+With the above specifications, the UAV almost meets our requirements. Choosing it for the immediate needs is ideal. Price would be around \rupee~7,00,000 (including all accessories and carrying case). This UAV is shown in figure \ref{fig:ms-delair-ux11}. It has a $110\,cm$ wingspan.
+
 \begin{figure}[ht]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
@@ -85,6 +106,23 @@ Price would be around \rupee~10,00,000 (including all accessories and carrying c
         \caption{senseFly eBee X}
         \label{fig:ms-sf-ebee-x}
     \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{delair-ux11.jpg}
+        \caption{Delair UX11}
+        \label{fig:ms-delair-ux11}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{wingtra-one-ii.png}
+        \caption{\href{https://wingtra.com/mapping-drone-wingtraone/}{WingtraOne Gen II}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{aeromapper-talon-lite.jpg}
+        \caption{\href{https://www.aeromao.com/aeromapper-talon-lite/}{Aeromapper Talon LITE}}
+    \end{subfigure}
     \caption{FW-UAV Market Survey}
     \label{fig:market-survey-fwuavs}
+    The VTOL capable WingtraOne is also a good choice. Another FW-UAV is Aeromapper Talon LITE
 \end{figure}
+
+% Airfoil selection
+\subfile{q1-4.tex}
