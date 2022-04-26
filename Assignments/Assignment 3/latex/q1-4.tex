@@ -71,7 +71,7 @@ We get $C_{L_w} = 0.37622$ for $V_a = 20$, giving us $\alpha = 1.4^\circ$. We ca
 
 If we want the \emph{most} optimal performance for the airfoil (highest $\sfrac{C_l}{C_d}$), we should choose to fly at around $16\,m/s$ (cruise). However, highest $\sfrac{C_L}{C_D}$ is found at around $\alpha = 2.1^\circ$. Our $V_a = 20\,m/s$ should be manageable.
 
-\paragraph*{Wing Design - Phase 3: Horizontal Tail}
+\paragraph*{Tail Design - Phase 3: Horizontal Tail}
 
 We place the tail such that at cruise speed, the pitching moment (along Y axis) is zero. The moment should be negative when $\alpha$ of wing increases, and should be positive when $\alpha$ of wing decreases from the cruise value. This will make the plane self stabilizing.
 
@@ -94,6 +94,49 @@ Through XFLR experimentation, we find that keeping $c = 0.2$, $b = 0.15$ for the
 
 As is visible in the bottom left graph of figure \ref{sub@fig:sfig-phase2-xflr}, the moment counters change in $\alpha$ and will make the plane passively stable. Minor adjustments can be done through control surface designing (elevator).
 
-\subsubsection*{Wing Design - Phase 4: Vertical Tail}
+\subsubsection*{Tail Design - Phase 4: Vertical Tail}
 
 This needn't be too complicated, we don't need to make agile maneuvers. We can choose an airfoil with zero camber so that it passively doesn't add yaw, something like \texttt{NACA 0012} airfoil should work.
+
+We run a batch analysis with a range of Reynolds number for \texttt{NACA 0012} and end up with the results in figure \ref{fig:sfig-naca0012-ba}.
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{naca0012-ba1.png}
+        \caption{NACA 0012}
+        \label{fig:sfig-naca0012-ba}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{plane-with-vtail.jpg}
+        \caption{Final plane}
+        \label{fig:sfig-plane-vtail}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{wing-vtail-phase3.png}
+        \caption{XFLR Analysis}
+        \label{fig:sfig-vtail-analysis}
+    \end{subfigure}
+    \caption{Final plane design}
+    \small
+        NACA 0012 airfoil for the vertical tail. The plane analysis is presented here.
+\end{figure}
+
+We then attach the vertical tail at $0.7\,m$ X and $0.025\,m$ Z, with \texttt{NACA 0012} airfoil and taking chord $0.20$ at base and $0.10$ at the top ($0.120$ height).
+The final plane is visible in figure \ref{fig:sfig-plane-vtail}.
+
+After running analysis on the plane (we do not expect much change from previous phase), we get figure \ref{fig:sfig-vtail-analysis}.
+
+\subsubsection*{Control Surface}
+
+The \textbf{elevator} and \textbf{rudder} are chosen at $35\%$ and $25\%$ of the chord length of horizontal and vertical tail respectively.
+
+Based on historical data, we choose the \textbf{aileron} to span $37.5\%$ of the wing, while spanning $25\%$ of the chord.
+
+\subsubsection*{Conclusion Notes}
+
+\begin{itemize}
+    \item We could have chosen a \emph{sweepback} wing planform instead of a \emph{rectangular} one. This will require a detailed batch analysis for the \texttt{NACA 2412} airfoil, as well as a more detailed review of the pitch and yaw control (as there will be no need of a tail). This will save a lot of space, but will make the design process more complicated (hence not attempted here).
+    \item The horizontal tail could also be a zero camber one, but with a different tile angle. We went with choosing the same airfoil as the wing.
+    \item Sometimes during analysis, we could gett a \texttt{Point out of flight envelop} error (this is because of interpolation issues). Seems like, the best fix is running a detailed batch analysis beforehand \footnote{From \href{https://www.xflr5.tech/docs/Point_Out_Of_Flight_Envelope.pdf}{xflr5.tech/docs/}}.
+\end{itemize}
