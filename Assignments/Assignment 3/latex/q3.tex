@@ -1,0 +1,81 @@
+% !TeX root = main.tex
+
+\section{MCDM}
+
+This section covers \textbf{MCDM} - Multi-Criteria Decision Making - for the airfoils discussed in the previous section
+
+We use the following as the criteria of airfoil selection
+
+\begin{enumerate}
+    \item $C_l$: The maximum $C_l$ value (regardless of $\alpha$) of the airfoil. The higher, the better.
+    \item $\sfrac{C_l}{C_d}$: The maximum $\sfrac{C_l}{C_d}$ value (regardless of $\alpha$) of the airfoil. The higher, the better.
+    \item $C_m$: The $C_m$ value at the $\alpha$ that has the highest $\sfrac{C_l}{C_d}$ ratio. This should be as close to zero as possible. All observations are negative, so higher the better.
+\end{enumerate}
+
+Going by the above metrics, we estimate the following \emph{decision matrix}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{||r|c|c|c||}
+        \hline
+        Airfoil & $C_l$ & $\sfrac{C_l}{C_d}$ & $C_m$ \\
+        \hline \hline
+        Selig S1223 & 2.286 & 98.95 & -0.266 \\
+        \hline
+        Eppler E220 & 1.142 & 105.74 & -0.037 \\
+        \hline
+        Martin Hepperle MH45 & 1.295 & 82.5 & -0.007 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+The weights given to the categories (second through fourth columns) is $W_1 = 0.3$, $W_2 = 0.35$, and $W_3 = 0.35$.
+
+% Weighted sum model
+\subsection{WSM}
+
+The \emph{Weighted Sum Model} value is given by $A_i = \sum_{j=1}^{N} q_{ij} w_j$. We pick the one with highest $A_i$.
+
+\begin{align*}
+    A_1 &= 2.286 * 0.30 + 98.95 * 0.35 + (-0.266) * 0.35 = 35.2252 \\
+    A_2 &= 1.142 * 0.30 + 105.74 * 0.35 + (-0.037) * 0.35 = 37.33865 \\
+    A_3 &= 1.295 * 0.30 + 82.5 * 0.35 + (-0.007) * 0.35 = 29.26105
+\end{align*}
+
+From the above, it is clear that \textbf{Eppler E220} should be chosen over others. The order is \texttt{Eppler E220} $>$ \texttt{Selig S1223} $>$ \texttt{Martin Hepperle MH45}.
+
+% Weighted product model
+\subsection{WPM}
+
+The \emph{Weighted Product Model} value is given by $R(\sfrac{A_K}{A_L}) = \Pi_{j=1}^{N} \left ( \sfrac{a_Kj}{a_Lj} \right )^{w_j}$, if $R > 1$, we choose the numerator over denominator. We do $^3\textup{C}_2 = 3$ comparisons. We take $-$ for the last weight because the ratio of two negative numbers will be positive and we want the value to be \emph{minimized} (high ratio means worse mark)
+
+\begin{align*}
+    R(\sfrac{A_1}{A_2}) &= \left ( \sfrac{2.286}{1.142} \right )^{0.30} \times \left ( \sfrac{98.95}{105.74} \right )^{0.35} \times \left ( \sfrac{-0.266}{-0.037} \right )^{-0.35} = 0.6032 < 1 \\
+    R(\sfrac{A_1}{A_3}) &= \left ( \sfrac{2.286}{1.295} \right )^{0.30} \times \left ( \sfrac{98.95}{82.5} \right )^{0.35} \times \left ( \sfrac{-0.266}{-0.007} \right )^{-0.35} = 0.3537 < 1 \\
+    R(\sfrac{A_2}{A_3}) &= \left ( \sfrac{1.142}{1.295} \right )^{0.30} \times \left ( \sfrac{105.74}{82.5} \right )^{0.35} \times \left ( \sfrac{-0.037}{-0.007} \right )^{-0.35} = 0.5864 < 1
+\end{align*}
+
+This yields us the comparisons $A_1 < A_2$, $A_1 < A_3$, and $A_2 < A_3$. Which means $A_3 > A_2 > A_1$.
+
+This basically gives us  \texttt{Martin Hepperle MH45} $>$ \texttt{Eppler E220} $>$ \texttt{Selig S1223}. We choose the \textbf{Martin Hepperle MH45}.
+
+\subsection{AHP}
+
+The \emph{Analytic Hierarchy Process} is given by $A_i = \sum_{j=1}^{N} q_{ij} w_j$, with the particular note being that $\sum_{i=1}^{N} q_{ij} = 1 \forall j$. We use $-$ for the last feature as higher magnitude ratio is worse. The rest is same as weighted sum model (WSM).
+
+\begin{align*}
+    \begin{split}
+        A_1 = &\left ( \frac{2.286}{2.286+1.142+1.295} \right ) \times 0.30 + \left ( \frac{98.95}{98.95+105.74+82.5} \right ) \times 0.35 \\
+            &- \left ( \frac{-0.266}{-0.266-0.037-0.007} \right ) \times 0.35 = -0.0345
+    \end{split} \\
+    \begin{split}
+        A_2 = &\left ( \frac{1.142}{2.286+1.142+1.295} \right ) \times 0.30 + \left ( \frac{105.74}{98.95+105.74+82.5} \right ) \times 0.35 \\
+            &- \left ( \frac{-0.037}{-0.266-0.037-0.007} \right ) \times 0.35 = 0.1596
+    \end{split} \\
+    \begin{split}
+        A_3 = &\left ( \frac{1.295}{2.286+1.142+1.295} \right ) \times 0.30 + \left ( \frac{82.5}{98.95+105.74+82.5} \right ) \times 0.35 \\
+            &- \left ( \frac{-0.007}{-0.266-0.037-0.007} \right ) \times 0.35 = 0.1749
+    \end{split}
+\end{align*}
+
+This yields $A_3 > A_2 > A_1$ (same as in the case of WPM). This basically gives us  \texttt{Martin Hepperle MH45} $>$ \texttt{Eppler E220} $>$ \texttt{Selig S1223}. We choose the \textbf{Martin Hepperle MH45}.
