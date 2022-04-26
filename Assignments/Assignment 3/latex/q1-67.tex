@@ -1,0 +1,90 @@
+% !TeX root = main.tex
+
+% Performance
+\subsection{Performance Analysis}
+
+We got the following when we were creating the wing
+
+\begin{align}
+    C_{L_w} = 3.2944 \alpha + 0.2951 &&
+    C_{M_w} = -0.5991 \alpha - 0.1522 &&
+    C_{D_w} = 0.7666 \alpha^2 + 0.2022 \alpha + 0.0065
+    \label{eq:q1-wing-lmdcoeffs-eqs}
+\end{align}
+
+Assuming that the drag is only due to the wing and the fuselage.
+
+\begin{align*}
+    F_{D_w} = C_{D_w} \frac{1}{2} \rho V_a^2 S_w &&
+    D_f = C_{Df} 0.5 \rho V_a^2 S_w &&
+    C_{Df} = C_{fe} \frac{S_{wa}}{S_w} = 2.535 \times 10^{-3}
+\end{align*}
+
+We substitute the following
+
+\begin{align*}
+    S_{wa} = \pi d_f l_f \left ( 1 - \frac{2}{\lambda_f} \right )^{\sfrac{2}{3}} \left ( 1 + \frac{1}{\lambda_f^2} \right ) = 0.18594\,m^2 &&
+    S_w = 0.22\,m^2 &&
+    C_{fe} = 0.003
+\end{align*}
+
+Where $\lambda_f = \sfrac{l_f}{d_f} = 8$, where $l_f = 0.8\,m$ is the length of the fuselage and $d_f = 0.1\,m$. The total drag will be given by $D = F_{D_w} + D_f$.
+
+For this analysis, we assume that $V_a = 20$ (airspeed). As observed in the design phase (of the wing), this yields $\alpha = 1.4^\circ$.
+
+This gives us the total drag as
+
+\begin{align*}
+    D &= F_{D_w} + D_f = C_{D_w} \frac{1}{2} \rho V_a^2 S_w + C_{D_f} \frac{1}{2} \rho V_a^2 S_w = \left ( C_{D_w} + C_{D_f} \right ) \frac{1}{2} \rho V_a^2 S_w \\
+    &= \left ( 0.7666 \alpha^2 + 0.2022 \alpha + 0.0065 + 2.535 \times 10^{-3} \right ) \frac{1}{2} \rho V_a^2 S_w = 0.014433 \times \frac{1}{2} \rho V_a^2 S_w \\
+    &= 0.7519\,N
+\end{align*}
+
+The diameter of our propeller is $13\,in$ and assuming the pitch to be $10\,in$. This puts it equal to the \texttt{Aeronaut 13 x 10} \footnote{Find it \href{https://m-selig.ae.illinois.edu/props/volume-3/propDB-volume-3.html}{here}}, which will be used for analysis hereon.
+
+Using an RPM of $4000$, we get the following values for propeller thrust
+
+\begin{align*}
+    J = \frac{V_a}{nD} = \frac{20}{\left ( \sfrac{4000}{60} \right ) \left ( 13 \times \sfrac{2.54}{100} \right )} = 0.908 &&
+    C_T = 0.013 &&
+    T = C_T \rho n^2 D^4 = 0.815\,N
+\end{align*}
+
+Keeping some additional drag into account, this thrust seems fine for the steady state flight.
+
+\paragraph*{Power}
+
+The power consumed when cruising is $P = \sfrac{T_a V_a}{\eta} = 29.26\,W$. The battery can give $4\times 4.2 \times 5 \times 3600 = 302.4\,kJ$.
+
+Even if the combined efficiency of the power system is $60\%$, this means a total cruising time of around $1.5\,hr$.
+
+\paragraph*{Climb}
+
+We need to climb at $2\,m/s$, we know that $mg \dot{h} = (T_a - D) V_a$. We will need $T_a = 2.72\,N$ for climbing. This is achieved at approximately $4500$ RPM.
+
+Assuming that we climb at $2\,m/s$, it'll take $50\,s$ to attain this. Considering that the thrust is $T_a = 2.72\,N$, and $D=0.7519\,N$ (drag), the energy requirement for the climb phase is $(2.72-0.7519)\times 20\times 50 = 1968.1\,J$.
+
+\paragraph*{Cruise}
+
+Assuming a cruise time of $60\,min = 3600\,sec$, the power required during cruise phase is $P = \sfrac{T_a V_a}{\eta} = 29.26\,W$ (actual thrust comes at around $T_a\approx 0.878\,N$, $\eta=0.6$).
+
+The total energy consumption is $29.26\times 3600 + 1968.1 = 107304.1\,J$ (per flight). The battery stores $302.4\,kJ$, it can easily power \textbf{two} complete flights.
+
+The total flight time possible here is $\sfrac{(302.4\times 10^3 - 1968.1)}{29.26} = 10267.66\,sec = 2.8\,hr$ (in the air). If one is ready to move communication stations, or attaches 4G to the drone, it can theoretically fly for about $10200\times 20 = 204\,km$.
+
+% Optimize
+\subsection{Design Optimization}
+
+In order to maximize the range, we assume that the drone is flying at the best $C_L/C_D$ value. This was already found to be $\alpha=2.1^\circ$, $V_a = 16\,m/s$. Using the same calculations as before, we have the new $C_L = 0.4158$ and $C_{D_w} = 0.01494$. Note that $C_{D_f} = 2.535 \times 10^{-3}$ remains unchanged.
+
+The lift force is $F_{L_w} = C_L \times 0.5 \times \rho V_a^2 S_w = 13.9\,N$. This means that our new mass is around $1.5\,kg$. We can shed some weight from the battery and make the components out of a lighter material. Some UAVs in our market survey have even lesser weight.
+
+The new drag is $D = (C_{D_w} + C_{D_f}) \times 0.5 \times \rho V_a^2 S_w = 0.584\,N$. We can now use the \texttt{Aeronaut 12 x 13} propeller and keep the flight cruising at just $3000$ RPM. 
+
+The power consumed when cruising is $P = \sfrac{T_a V_a}{\eta} = \sfrac{(0.584\times 16)}{0.6} = 15.5733\,W$.
+
+During the climb phase, the thrust required is given by $T_a = \sfrac{mg \dot{h}}{V_a} + D \Rightarrow T_a = 2.4241$. At 4000 RPM, we get a thrust of $T_a = 3.050\,N$ (more than enough for takeoff and climb of $2\,m/s$).
+
+The new energy requirement for climb is $(3.050-0.584)\times 16\times 50 = 1972.8\,J$. The power requirement for cruising is $15.5733\,W$. If we assume an endurance of $60\,min$, we will consume $1972.8+15.5733\times 3600 = 58036.68\,J$. With a $302.4\,kJ$ battery, we can now power \textbf{five} flights!
+
+The total flight time possible here is $\sfrac{(302.4\times 10^3 - 1972.8)}{15.5733} = 19291.17\,sec = 5.35\,hr$ (in the air). If one is ready to move communication stations, or attaches 4G to the drone, it can theoretically fly about $19200\times 16 = 307.2 \, km$.

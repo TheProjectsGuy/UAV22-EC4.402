@@ -138,5 +138,6 @@ Based on historical data, we choose the \textbf{aileron} to span $37.5\%$ of the
 \begin{itemize}
     \item We could have chosen a \emph{sweepback} wing planform instead of a \emph{rectangular} one. This will require a detailed batch analysis for the \texttt{NACA 2412} airfoil, as well as a more detailed review of the pitch and yaw control (as there will be no need of a tail). This will save a lot of space, but will make the design process more complicated (hence not attempted here).
     \item The horizontal tail could also be a zero camber one, but with a different tile angle. We went with choosing the same airfoil as the wing.
+    \item We can add $10\%$ wing tips at both sides of the wing to prevent vortex drag. But this will require some advanced analysis (for new drag and lift calculations).
     \item Sometimes during analysis, we could gett a \texttt{Point out of flight envelop} error (this is because of interpolation issues). Seems like, the best fix is running a detailed batch analysis beforehand \footnote{From \href{https://www.xflr5.tech/docs/Point_Out_Of_Flight_Envelope.pdf}{xflr5.tech/docs/}}.
 \end{itemize}

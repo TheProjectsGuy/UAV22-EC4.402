@@ -126,3 +126,33 @@ With the above specifications, the UAV almost meets our requirements. Choosing i
 
 % Airfoil selection
 \subfile{q1-4.tex}
+
+% Components
+\subsection{Component Identification}
+
+Identifying all parts of the FW-UAV. The total weight will come around $2\,kg$.
+
+\subsubsection*{Common parts}
+
+The plane \textbf{airfoils} are decided in the previous subsection. We will also need an \emph{aerodynamic body} to join all parts, as well as host all other components.
+
+We will need a \textbf{GPS} module (for location information). We could use the \texttt{NEO-6M GPS Module} (more info \href{https://www.electroschematics.com/neo-6m-gps-module/}{here}).
+
+We will also need two airspeed sensors (mounted in a perpendicular fashion). We could use the \texttt{MATEKSYS Digital Airspeed Sensor (ASPD-4525)} (more info \href{http://www.mateksys.com/?portfolio=aspd-4525}{here}), which will give us the differential pressure (and the airspeed)
+
+We use the \texttt{Ardupilot firmware on BeagleBone Blue} (reference \href{https://ardupilot.org/plane/docs/common-beagle-bone-blue.html}{here}). We can also have a telemetry sensor (or store odometry data on the beagle bone).
+
+We can use the \texttt{EMAX ES08MA II} metal servo (more info \href{https://emaxmodel.com/products/emax-es08ma-ii-12g-mini-metal-gear-analog-servo-for-rc-model-robot-pwm-servo}{here}) for the control surfaces.
+
+\subsubsection*{Propeller, ESC and Battery}
+
+We could use the \texttt{F3P T90-4D} propeller, and the \texttt{AM20 F3P-A} motor \footnote{More about motor \href{http://en.tmotorhobby.com/goods.php?id=1137}{here}, and about propeller \href{https://store.tmotor.com/goods.php?id=1077}{here}}. The ESC can be \texttt{AM66A + AM Link 3D} \footnote{More about the ESC \href{https://store.tmotor.com/goods.php?id=1173}{here}}.
+
+A battery with high enough C rating is needed \footnote{The C Rating gives an estimate of charging and discharging current of a battery $I = C_{r} \times E_{Ah}$. More \href{https://www.power-sonic.com/blog/what-is-a-battery-c-rating/}{here}}. We can choose the \texttt{Turnigy 5000mAh 4S, 20C} battery.
+
+\subsubsection*{Sensor payload}
+
+We can use multiple \texttt{OV2640 Binocular Camera} sensors along with \texttt{Walkera G-2D} gimbal (will require some modifications). This will give high field of view in 3D and require fewer traversals \footnote{More about the camera \href{https://robu.in/product/ov2640-binocular-camera-module-cmos-stm32-driver-3-3v-16001200-for-3d-measurement-with-sccb-interface/?gclid=CjwKCAjwjZmTBhB4EiwAynRmDwSvD0T3b_5tGSfUsN1u4SkNTamfwdZwLdCYZd_c6w4zhIOolFD22hoCSK0QAvD_BwE}{here} and the gimbal \href{http://www.ehirobo.com/walkera-wk-g-2d-brushless-camera-gimbal.html}{here}}.
+
+% Performance analysis and optimization
+\subfile{q1-67.tex}
