@@ -10,6 +10,7 @@ A repository to store all items pertaining to course `Introduction to UAV Design
     - [Table of contents](#table-of-contents)
     - [Contents](#contents)
         - [Assignments](#assignments)
+        - [Project](#project)
 
 ## Contents
 
@@ -21,12 +22,11 @@ The assignments of this course are as follows
 | :----- | :------ |
 | [Assignment 1](Assignments/Assignment%201/README.md) | Basic UAV design criteria |
 | [Assignment 2](./Assignments/Assignment%202/README.md) | Modeling and control of a UAV (position target) |
-
-The following assignments are in process
-
-| Assignment | Description |
-| :----- | :------ |
 | [Assignment 3](./Assignments/Assignment%203/README.md) | FW-UAV design criteria |
+
+### Project
+
+The project is available at [TheProjectsGuy/UAV22-EC4.402-Project](https://github.com/TheProjectsGuy/UAV22-EC4.402-Project).
 
 [![Developer TheProjectsGuy][dev-shield]][dev-profile-link]
 
