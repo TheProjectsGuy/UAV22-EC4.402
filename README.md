@@ -8,7 +8,7 @@ A repository to store all items pertaining to course `Introduction to UAV Design
 
 [![Attribution-NonCommercial-ShareAlike 4.0 International CC BY-NC-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-This repository is for personal reference only. Please do not copy code for homework (understanding is better than grades). Please adhere to the license [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). Appropriate credits are mentioned in the end of README documents.
+This repository is for personal reference only. Please do not copy code for homework (understanding is better than grades). Please adhere to the license [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). Appropriate credits are mentioned in the end of README documents. This license applies to only this repository (and **not** the project).
 
 ## Table of contents
 
