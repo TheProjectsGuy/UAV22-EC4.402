@@ -4,9 +4,16 @@ A repository to store all items pertaining to course `Introduction to UAV Design
 
 - **Professor**: [Dr. Harikumar Kandath](https://www.iiit.ac.in/people/faculty/Harikumar/)
 
+## License
+
+[![Attribution-NonCommercial-ShareAlike 4.0 International CC BY-NC-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc-sa.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+This repository is for personal reference only. Please do not copy code for homework (understanding is better than grades). Please adhere to the license [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode). Appropriate credits are mentioned in the end of README documents.
+
 ## Table of contents
 
 - [Introduction to UAV Design (Spring 2022) @ IIITH](#introduction-to-uav-design-spring-2022--iiith)
+    - [License](#license)
     - [Table of contents](#table-of-contents)
     - [Contents](#contents)
         - [Assignments](#assignments)
