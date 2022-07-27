@@ -1,5 +1,9 @@
 # Introduction to UAV Design (Spring 2022) @ IIITH
 
+[Written Notes](https://iiitaphyd-my.sharepoint.com/:f:/g/personal/avneesh_mishra_research_iiit_ac_in/EkU8fyl7ajNHo2XT8aIWAWwBRh2bw809rpOdciJVS_grIg?e=QTL58W)
+
+---
+
 A repository to store all items pertaining to course `Introduction to UAV Design`
 
 - **Professor**: [Dr. Harikumar Kandath](https://www.iiit.ac.in/people/faculty/Harikumar/)
